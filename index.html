@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2025!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url(https://drive.google.com/file/d/1nqJN9Ybc5aLYtmlvC6HfkLX-LvLbiKJs/view?usp=sharing);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: yellow;
+            padding: 20px 0;
+        }
+        h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-family: 'Arial', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>DH23CN Chúc Mừng Năm Mới 2025 tới các bạn!</h1>
+    </header>
+    <div>
+        <button onclick="generateWish()">Nhận câu chúc năm mới</button>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        const wishes = [
+            "Chúc bạn một năm mới tràn đầy thành công trong học tập!",
+            "Mong rằng năm 2025 sẽ mang đến cho bạn nhiều cơ hội học hỏi và trưởng thành!",
+            "Năm mới hạnh phúc! Hãy biến 2025 thành năm của tri thức và thành tựu.",
+            "Chúc bạn luôn kiên trì và đạt được nhiều thành công trong hành trình học vấn!",
+            "Năm mới vui vẻ! Hy vọng bạn sẽ khám phá được nhiều điều thú vị trong học tập.",
+            "Chúc năm 2025 là bước đệm cho những thành công lớn hơn trong học tập của bạn!",
+            "Hãy để năm nay là năm của sự khám phá và sáng tạo trong học vấn!",
+            "Chúc bạn đạt được mọi mục tiêu học tập và ngày càng tiến xa!",
+            "Năm mới chúc bạn luôn tràn đầy năng lượng và sự quyết tâm!",
+            "Chúc bạn vượt qua mọi thử thách trong học tập và đạt được thành công!",
+            "Chúc năm 2025 mang lại nhiều cơ hội tuyệt vời để bạn học hỏi và trưởng thành!",
+            "Hãy để tri thức dẫn lối bạn trong năm mới!",
+            "Năm mới an khang, thịnh vượng và đầy cảm hứng học tập!",
+            "Chúc bạn luôn tìm thấy niềm vui và ý nghĩa trong học tập!",
+            "Hãy để năm mới là một khởi đầu đầy ý nghĩa cho hành trình học vấn của bạn!",
+            "Chúc bạn luôn giữ vững lòng kiên trì và đạt được những điều tuyệt vời!",
+            "Chúc bạn có thêm nhiều khám phá thú vị và thành tựu lớn trong năm nay!",
+            "Chúc bạn một năm mới đầy cơ hội để phát triển bản thân!",
+            "Hãy tận hưởng hành trình học tập trong năm mới!",
+            "Chúc bạn đạt được những cột mốc mới trong sự nghiệp học tập!",
+            "Năm mới chúc bạn luôn tràn đầy đam mê và cảm hứng học tập!",
+            "Chúc bạn gặt hái nhiều thành quả trong học tập và cuộc sống!",
+            "Năm mới là cơ hội tuyệt vời để bạn học hỏi và khám phá!",
+            "Hãy luôn học hỏi không ngừng trong năm mới!",
+            "Chúc bạn luôn tự tin và mạnh mẽ để đối mặt với mọi thử thách!",
+            "Năm 2025 sẽ là một năm đáng nhớ với những thành tựu rực rỡ!",
+            "Chúc bạn giữ vững đam mê và theo đuổi ước mơ học vấn của mình!",
+            "Chúc bạn luôn có động lực và năng lượng để học tập mỗi ngày!",
+            "Năm mới chúc bạn sẽ có những trải nghiệm học tập tuyệt vời!",
+            "Chúc bạn phát triển toàn diện và đạt được những thành công lớn!",
+            "Hãy để năm mới là một hành trình đầy thú vị và bổ ích!",
+            "Chúc bạn luôn đạt điểm cao và hoàn thành mọi mục tiêu!",
+            "Năm 2025 sẽ là năm của sự tiến bộ và thành công vượt bậc!",
+            "Chúc bạn học thật giỏi và luôn là niềm tự hào của gia đình!",
+            "Hãy bước vào năm mới với sự tự tin và khát vọng lớn lao!",
+            "Chúc bạn luôn mạnh mẽ và bền bỉ trên con đường học vấn!",
+            "Hãy làm cho năm mới trở nên đặc biệt với những thành tựu đáng nhớ!",
+            "Chúc bạn sẽ khám phá được niềm đam mê mới trong học tập!",
+            "Năm mới chúc bạn luôn tiến xa hơn và đạt được mọi điều mong muốn!",
+            "Hãy để tri thức là người bạn đồng hành tuyệt vời trong năm 2025!",
+            "Chúc bạn luôn có niềm vui và sự hứng khởi trong học tập!",
+            "Năm mới chúc bạn thành công trong mọi mục tiêu đã đề ra!",
+            "Chúc bạn luôn tràn đầy nhiệt huyết và niềm tin vào bản thân!",
+            "Hãy làm cho mỗi ngày trong năm 2025 là một ngày học tập ý nghĩa!",
+            "Chúc bạn đạt được những điều tuyệt vời nhất trong học tập!",
+            "Năm mới an lành, hạnh phúc và đầy thành công!",
+            "Chúc bạn luôn tìm thấy niềm vui trong từng bài học!",
+            "Năm mới chúc bạn luôn có những ý tưởng sáng tạo và đột phá!",
+            "Chúc bạn vững vàng trên con đường học vấn đầy thử thách!",
+            "Hãy để năm mới là một bước ngoặt đầy ý nghĩa trong sự nghiệp học tập!",
+            "Chúc bạn luôn tự tin và khám phá những chân trời tri thức mới!",
+            "Chúc bạn đạt được những ước mơ lớn trong năm 2025!",
+            "Hãy để niềm đam mê học tập dẫn dắt bạn đến thành công!",
+            "Chúc bạn luôn giữ vững tinh thần lạc quan và yêu đời!",
+            "Năm mới hạnh phúc, thịnh vượng và đầy ý nghĩa!",
+            "Chúc bạn luôn được truyền cảm hứng để học tập mỗi ngày!",
+            "Hãy để năm 2025 là một chương mới đầy thành công trong cuộc đời bạn!",
+            "Chúc bạn khám phá được những tiềm năng mới trong năm mới!",
+            "Chúc bạn luôn kiên định và mạnh mẽ trên con đường chinh phục tri thức!",
+            "Hãy để năm mới là một hành trình tuyệt vời với nhiều bài học quý giá!",
+            "Chúc bạn luôn tràn đầy động lực và sự sáng tạo!",
+            "Năm mới chúc bạn luôn được quý nhân phù trợ và gặp nhiều may mắn!",
+            "Chúc bạn luôn tìm thấy những người bạn đồng hành tốt trong học tập!",
+            "Hãy để năm mới là năm của sự bứt phá và thành công vượt bậc!",
+            "Chúc bạn luôn học giỏi và nhận được sự công nhận từ mọi người!",
+            "Hãy sống và học tập hết mình để không hối tiếc trong năm mới!",
+            "Chúc bạn khám phá được nhiều điều mới mẻ trong năm 2025!",
+            "Hãy luôn giữ vững tinh thần học hỏi và cầu tiến trong năm mới!",
+            "Chúc bạn sẽ tìm thấy niềm vui trong từng thử thách của học tập!",
+            "Hãy để tri thức dẫn dắt bạn đến những chân trời mới trong năm mới!",
+            "Chúc bạn luôn thành công và hạnh phúc trong hành trình học vấn!",
+            "Hãy biến năm mới thành một năm của sự phát triển vượt bậc!",
+            "Chúc bạn luôn gặt hái được nhiều thành tựu trong học tập và cuộc sống!",
+            "Hãy để năm 2025 là một năm đầy cảm hứng và ý nghĩa với bạn!",
+            "Chúc bạn luôn tìm thấy niềm vui và ý nghĩa trong mỗi bài học!",
+            "Năm mới chúc bạn luôn mạnh mẽ và kiên trì để vượt qua mọi thử thách!",
+            "Hãy để năm mới là cơ hội để bạn học hỏi và phát triển bản thân!",
+            "Chúc bạn luôn đạt được những kết quả tốt trong học tập và cuộc sống!",
+            "Hãy tận hưởng từng khoảnh khắc của năm mới và học tập thật tốt!",
+            "Chúc bạn sẽ khám phá được những tiềm năng mới trong năm 2025!",
+            "Hãy để năm mới là một chương sách đầy ý nghĩa trong cuộc đời bạn!",
+            "Chúc bạn luôn tràn đầy cảm hứng và sự quyết tâm trong học tập!",
+            "Chúc bạn gặt hái được nhiều thành công trong mọi lĩnh vực bạn tham gia!",
+            "Hãy để niềm đam mê và nỗ lực dẫn dắt bạn đến thành công!",
+            "Chúc bạn luôn giữ vững tinh thần học hỏi và khám phá tri thức mới!",
+            "Hãy để năm 2025 là một hành trình đầy thú vị và bổ ích cho bạn!",
+            "Chúc bạn luôn đạt được những điều bạn mong muốn trong học tập và cuộc sống!",
+            "Hãy để mỗi ngày trong năm mới là một ngày tràn đầy ý nghĩa và học hỏi!",
+            "Chúc bạn luôn giữ vững sự nhiệt huyết và đạt được thành công lớn trong năm mới!",
+            "Chúc bạn sẽ có một năm học tập hiệu quả và đạt được nhiều thành tích cao!",
+            "Hãy để năm mới là năm của sự thành công và hạnh phúc với bạn!",
+            "Chúc bạn luôn tiến xa hơn và đạt được những mục tiêu lớn trong học tập!",
+            "Hãy để tri thức là người bạn đồng hành tuyệt vời trong năm mới của bạn!",
+            "Chúc bạn luôn vững bước trên con đường học vấn và đạt được nhiều thành tựu lớn!"
+        ];
+
+        function generateWish() {
+            const randomIndex = Math.floor(Math.random() * wishes.length);
+            const messageElement = document.getElementById('message');
+            messageElement.textContent = wishes[randomIndex];
+        }
+    </script>
+</body>
+</html>
